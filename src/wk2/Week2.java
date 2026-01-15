@@ -9,9 +9,9 @@ public class Week2 {
     public static void main(String[] args) {
 
         makingDecisions2();
-        //System.out.println(validateAgeValue("100abc"));
+        //System.out.println(validateWholeNumberValue("100abc"));
    }
-    static boolean validateAgeValue(String value){
+    static boolean validateWholeNumberValue(String value){
 
         //foreach loop in Java aka Enhanced For Loop
         //for(datatype placeHolder : collectionOfValues)
@@ -37,7 +37,7 @@ public class Week2 {
 
         System.out.println("Enter your age: ");
         String answer = input.nextLine();  //gets the input as a string
-        if(!validateAgeValue(answer)){
+        if(!validateWholeNumberValue(answer)){
             //serr+tab
             System.err.println("Invalid age inputted");
             return;  //end the method execution
@@ -55,6 +55,9 @@ public class Week2 {
             System.out.println("Elder");
         }
         System.out.println( "*".repeat(10) );
+        System.out.println("**********");
+        System.out.println("I Love Java! ".repeat(100));
+        "hi".repeat(100);
        }
 
     static void makingDecisions2(){
@@ -76,6 +79,46 @@ public class Week2 {
         System.out.printf("Based on your age category of %s, your age range is %s\n", answer, result);
     }
 
+    static void task1(){
 
+        System.out.println("Enter password: ");
+        String answer = input.nextLine();
 
+        int countNum = 0, countUpper = 0, countLower =0, countSpecial = 0;
+
+        for(int i = 0; i < answer.length(); i++){
+
+            if(Character.isLowerCase(answer.charAt(i))) countLower++;
+            else if(Character.isUpperCase(answer.charAt(i))) countUpper++;
+            else if(Character.isDigit(answer.charAt(i))) countNum++;
+            else countSpecial++;
+        }
+
+        if(countUpper > 0 && countLower > 0 && countNum > 0 && countSpecial > 0){
+            System.out.println("Password is Strong");
+        }
+        else{
+            System.out.println("Password is Weak");
+        }
+    }
+    static void task2() {
+
+        int numberToGuess = 5;
+        while (true) {
+            System.out.println("Enter a number between 1 and 10");
+            String answer = input.nextLine();
+            if (!validateWholeNumberValue(answer)) {
+                System.out.println("Invalid numerical input");
+                continue;
+            }
+
+            int number = Integer.parseInt(answer);
+
+            if (number == numberToGuess) {
+                System.out.println("Congrats! You guessed the number");
+                break;
+            }
+            System.out.println("Incorrect Guess. Try again");
+        }
+    }
 }
